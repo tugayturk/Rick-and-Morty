@@ -1,0 +1,32 @@
+.homePageContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  
+}
+.introductionWrapper{
+    background-image: url("https://wallpaperforu.com/wp-content/uploads/2021/08/Wallpaper-Rick-And-Morty-Wallpaper-Tv-Show-Morty-Smith361920x1080.jpg");
+  width: 100%;
+  height: 100vh;
+  background-size:cover ;
+  color:#fff;
+ 
+}
+.introductionWrapper> h1 {
+    color:#fff;
+    display: flex;
+    
+    align-items: flex-end;
+}
+.episodeWrapper{
+    height: 100vh;
+    width: 100%;
+    background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
+
+}
+.characterWrapper{
+    height:100vh;
+    width: 100%;
+    background-image: url("https://images7.alphacoders.com/633/633262.png");
+
+}
