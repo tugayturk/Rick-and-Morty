@@ -1,0 +1,11 @@
+.episodeTitle{
+display: flex;
+justify-content: center;
+}
+
+.episodeCards{
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+

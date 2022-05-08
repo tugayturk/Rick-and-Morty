@@ -9,14 +9,13 @@ import {
   Routes,
 } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import { useParams } from "react-router-dom";
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 function App() {
  
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout className="layout" >
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
         <div className="logo" />
         <Menu

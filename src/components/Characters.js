@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
 import CharacterDetail from "./CharacterDetail";
+import "./Characters.css"
 
 function Characters() {
   const { Meta } = Card;
@@ -255,8 +256,7 @@ function Characters() {
           justifyContent: "space-between",
         }}
       >
-        <h1>Characters</h1>
-      </div>
+        </div>
       <Modal
         title={character?.name}
         visible={isModalVisible}
@@ -278,9 +278,11 @@ function Characters() {
         </Card>
       </Modal>
       <Table
+       title={()=>(<h3 className="charactersTitle" >Characters List</h3>)}
         columns={columns}
         dataSource={characters}
         onChange={onTableChange}
+        rowKey="id"
         pagination={{
           total: totalCharacterNumbers,
           showSizeChanger: true,
