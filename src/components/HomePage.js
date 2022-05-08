@@ -1,14 +1,9 @@
 import { Button } from "antd";
 import React from "react";
-import { useEffect } from "react";
-import { API_BASE_EPISODES } from "../config/EnvironmentConfig";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
 function HomePage() {
-  useEffect(() => {
-    fetch(API_BASE_EPISODES)
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, []);
+ 
 
   return (
     <div className="homePageContainer">
@@ -20,11 +15,15 @@ function HomePage() {
       </div>
       <div className="episodeWrapper">
         Episodes
+        <Link to="/episodes">
         <Button type="primary">Go to Episodes Page</Button>
+        </Link>
       </div>
       <div className="characterWrapper">
         Characters
+        <Link to="/characters">
         <Button type="primary">Go to Characters Page</Button>
+        </Link>
       </div>
     </div>
   );
