@@ -1,30 +1,47 @@
-import { Button } from "antd";
+import { Button, Layout } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
+import {
+ ArrowRightOutlined
+} from '@ant-design/icons';
 function HomePage() {
- 
-
+  const { Footer } = Layout;
   return (
     <div className="homePageContainer">
       <div className="introductionWrapper">
-        <h1>
-          An animated series that follows the exploits of a super scientist and
-          his not-so-bright grandson.Created by Dan Harmon & Justin Roiland
-        </h1>
+        <div className="introduction">
+          <div className="introductionDescription">
+            An animated series that follows the exploits of a super scientist
+            and his not-so-bright grandson.Created by Dan Harmon & Justin
+            Roiland
+          </div>
+        </div>
       </div>
       <div className="episodeWrapper">
-        Episodes
+        <div >
         <Link to="/episodes">
-        <Button type="primary">Go to Episodes Page</Button>
+          <Button type="primary" shape="round" icon={<ArrowRightOutlined />} size="large" >Go to Episodes Page</Button>
         </Link>
+        </div>
       </div>
       <div className="characterWrapper">
-        Characters
+      <div >
         <Link to="/characters">
-        <Button type="primary">Go to Characters Page</Button>
+        <Button type="primary" shape="round" icon={<ArrowRightOutlined />} size="large" >Go to Characters Page</Button>
         </Link>
+        </div>
       </div>
+
+      <Footer
+        style={{
+          textAlign: "center",
+          backgroundColor: "#001529",
+          color: "#F0E3FF",
+        }}
+      >
+        Rick&Morty Created by Tugay Türk
+      </Footer>
     </div>
   );
 }

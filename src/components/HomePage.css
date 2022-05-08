@@ -5,28 +5,55 @@
   
 }
 .introductionWrapper{
-    background-image: url("https://wallpaperforu.com/wp-content/uploads/2021/08/Wallpaper-Rick-And-Morty-Wallpaper-Tv-Show-Morty-Smith361920x1080.jpg");
-  width: 100%;
-  height: 100vh;
-  background-size:cover ;
-  color:#fff;
- 
+   background-image: url("https://wallpaperaccess.com/full/6798923.jpg");
+   width: 100%;
+   height: 100vh;
+   background-size:cover ;
+   color:#fff;
+   display: flex;
+   justify-content:center;
+   align-items: center;
 }
-.introductionWrapper> h1 {
-    color:#fff;
+.introduction{
+    text-align: center;
+    font-size: 1.5vw;
+    font-weight: bold;
     display: flex;
-    
-    align-items: flex-end;
+    justify-content: center;
+    font-style: italic;
 }
+
+.introductionDescription{
+    color:#fff;
+    margin-top: 10vw;
+    animation: desc_anim 1s forwards;
+    width: 70%;
+}
+@keyframes desc_anim {
+	0%{
+		width:50%;
+	}
+	100%{
+		width:  100%;
+	}
+}
+
 .episodeWrapper{
     height: 100vh;
     width: 100%;
     background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 .characterWrapper{
     height:100vh;
     width: 100%;
     background-image: url("https://images7.alphacoders.com/633/633262.png");
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

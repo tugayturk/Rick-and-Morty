@@ -8,7 +8,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu } from "antd";
 import { useParams } from "react-router-dom";
 
 const { Header, Content, Footer } = Layout;
@@ -45,16 +45,11 @@ function App() {
       </Header>
       <Content
         className="site-layout"
-        style={{ padding: "0 50px", marginTop: 64 }}
+        style={{ marginTop: 64 }}
       >
-        {/* <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb> */}
         <div
           className="site-layout-background"
-          style={{ padding: 24, minHeight: 380 }}
+          style={{ minHeight: 380 }}
         >
           <Router>
             <Routes>
@@ -73,9 +68,7 @@ function App() {
           </Router>
         </div>
       </Content>
-      {/* <Footer style={{ textAlign: "center" }}>
-      Ant Design ©2018 Created by Ant UED
-    </Footer> */}
+     
     </Layout>
   );
 }

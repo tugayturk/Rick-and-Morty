@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button, Card, List, Input, Table, Tag, Space } from "antd";
+import { Button, Card, List, Input, Table, Tag, Space, Modal, Descriptions } from "antd";
 import { API_BASE_CHARACTERS } from "../config/EnvironmentConfig";
 import { Link } from "react-router-dom";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
+import CharacterDetail from "./CharacterDetail";
 
 function Characters() {
   const { Meta } = Card;
@@ -14,6 +15,8 @@ function Characters() {
   const [totalCharacterNumbers, setTotalCharacterNumbers] = useState();
   const [searchedColumn, setSearchedColumn] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   useEffect(() => {
     fetch(API_BASE_CHARACTERS)
       .then((response) => response.json())
@@ -148,13 +151,30 @@ function Characters() {
     }
   }
 
+  const [character, SetCharacter] = useState();
+  const showModal = (characterId) => {
+    setIsModalVisible(true);
+    fetch(`${API_BASE_CHARACTERS}/${characterId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        SetCharacter(data);
+        console.log(data);
+      });
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
       key: "id",
       sorter: (a, b) => a.id - b.id,
-      sortDirections: ["descend","ascend"],
+      sortDirections: ["descend", "ascend"],
     },
     {
       title: "Name",
@@ -216,9 +236,11 @@ function Characters() {
       key: "action",
       render: (text, record) => (
         <Space size="middle">
-          <Link to={`/characters/${text.id}`}>
-            <Button type="primary">Details Page </Button>
-          </Link>
+          {/* <Link to={`/characters/${text.id}`}> */}
+          <Button onClick={() => showModal(record.id)} type="primary">
+            Details Page{" "}
+          </Button>
+          {/* </Link> */}
         </Space>
       ),
     },
@@ -235,7 +257,26 @@ function Characters() {
       >
         <h1>Characters</h1>
       </div>
-
+      <Modal
+        title={character?.name}
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Card
+          hoverable
+          style={{ width: 480, height: 600 }}
+          cover={<img alt="example" src={character?.image} />}
+        >
+          <Meta  />
+          <Tag color="volcano">{character?.status}</Tag>
+          <Tag color="magenta">{character?.species}</Tag>
+          <Tag color="geekblue">{character?.gender}</Tag>
+          <Descriptions >
+          <Descriptions.Item label="Episode Attendance">{character?.episode.length}</Descriptions.Item>
+          </Descriptions>
+        </Card>
+      </Modal>
       <Table
         columns={columns}
         dataSource={characters}

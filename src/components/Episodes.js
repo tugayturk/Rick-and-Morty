@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { API_BASE_EPISODES } from "../config/EnvironmentConfig";
-import { List, Card, Pagination, Button } from "antd";
+import { Card, Pagination, Button } from "antd";
 import { Link } from "react-router-dom";
 function Episodes() {
   const { Meta } = Card;
@@ -29,30 +29,18 @@ function Episodes() {
   return (
     <div>
       Episodes
-      <List
-        grid={{
-          gutter: 16,
-          xs: 1,
-          sm: 2,
-          md: 4,
-          lg: 4,
-          xl: 6,
-          xxl: 3,
-        }}
-      >
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         {episodes?.map((episode) => {
           return (
-            <List.Item>
-              <Card>
-                <Meta title={episode.name} description={episode.episode} />
-                <Link to={`/episodes/${episode.id}`}>
-                  <Button type="primary">Details</Button>
-                </Link>
-              </Card>
-            </List.Item>
+            <Card style={{ width: 240 }}>
+              <Meta title={episode.name} description={episode.episode} />
+              <Link to={`/episodes/${episode.id}`}>
+                <Button type="primary">Details</Button>
+              </Link>
+            </Card>
           );
         })}
-      </List>
+      </div>
       <Pagination
         onChange={onPageChange}
         defaultCurrent={2}
