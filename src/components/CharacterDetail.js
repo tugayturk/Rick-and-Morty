@@ -1,6 +1,6 @@
 import { Card, Spin, Descriptions } from "antd";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { API_BASE_CHARACTERS } from "../config/EnvironmentConfig";
 
 function CharacterDetail() {
@@ -39,10 +39,6 @@ function CharacterDetail() {
               <Descriptions.Item label="Status">
                 {character.status}
               </Descriptions.Item>
-              {/* <Descriptions.Item label="Remark">empty</Descriptions.Item>
-<Descriptions.Item label="Address">
-  No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
-</Descriptions.Item> */}
             </Descriptions>
           </div>
         </div>

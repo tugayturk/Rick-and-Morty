@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { API_BASE_EPISODES } from "../config/EnvironmentConfig";
-import { Card, Pagination, Button, Row, Col, Divider, Badge } from "antd";
+import { Card, Pagination, Button, Row, Col, Divider, Badge, Spin } from "antd";
 import { Link } from "react-router-dom";
 import "./Episode.css";
 
@@ -9,6 +9,7 @@ function Episodes() {
   const { Meta } = Card;
   const [episodes, SetEpisodes] = useState();
   const [episodeNumber, SetEpisodeNumber] = useState();
+  const [isLoading,setIsLoading] = useState(true)
 
   useEffect(() => {
     fetch(API_BASE_EPISODES)
@@ -16,6 +17,7 @@ function Episodes() {
       .then((data) => {
         SetEpisodeNumber(data.info.count);
         SetEpisodes(data.results);
+        setIsLoading(false)
       });
   }, []);
 
@@ -30,7 +32,7 @@ function Episodes() {
 
 
   return (
-    <div className="episodeContainer">
+   isLoading ? <Spin /> : <div className="episodeContainer">
       <h1 className="episodeTitle"> Episodes</h1>
       <Row>
         <div  style={{ display: "flex", flexWrap: "wrap" }}>
@@ -57,7 +59,7 @@ function Episodes() {
                     <Meta title={episode.name} className="episodeCards" />
                    
                     <Link to={`/episodes/${episode.id}`}>
-                      <Button  type="primary">Details</Button>
+                      <Button data-testid="detailButton" type="primary">Details</Button>
                     </Link>
                     </div>
                   </Card>
@@ -79,6 +81,7 @@ function Episodes() {
         defaultPageSize={20}
       />
     </div>
+  
   );
 }
 

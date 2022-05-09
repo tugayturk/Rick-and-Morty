@@ -21,14 +21,14 @@ function HomePage() {
       <div className="episodeWrapper">
         <div >
         <Link to="/episodes">
-          <Button type="primary" shape="round" icon={<ArrowRightOutlined />} size="large" >Go to Episodes Page</Button>
+          <Button data-testid="episodeButton" type="primary" shape="round" icon={<ArrowRightOutlined />} size="large" >Go to Episodes Page</Button>
         </Link>
         </div>
       </div>
       <div className="characterWrapper">
       <div >
         <Link to="/characters">
-        <Button type="primary" shape="round" icon={<ArrowRightOutlined />} size="large" >Go to Characters Page</Button>
+        <Button data-testid="charactersButton" type="primary" shape="round" icon={<ArrowRightOutlined />} size="large" >Go to Characters Page</Button>
         </Link>
         </div>
       </div>

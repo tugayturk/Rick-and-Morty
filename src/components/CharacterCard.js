@@ -32,15 +32,15 @@ function CharacterCard(props) {
     return parseInt(str[str.length - 1]);
   };
   return (
-    <div>
+    
          <Row>
       {details &&
         details.map((detail) => {
           return (
-            <Col xs={24} sm={24} md={12} lg={8} xl={6}  key={detail.id}>
+            <Col xs={23} sm={23} md={11} lg={7} xl={5} offset={1} key={detail.id}>
             <Card
               hoverable
-              style={{ width: 240 }}
+              style={{ width: 240,marginBottom:"1vw"}}
               cover={<img alt={detail.name} src={detail.image} />}
             >
               <Meta title={detail.name} description={detail.status} />
@@ -49,7 +49,6 @@ function CharacterCard(props) {
           );
         })}
         </Row>
-    </div>
   );
 }
 

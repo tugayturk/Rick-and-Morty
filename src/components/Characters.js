@@ -1,15 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button, Card, List, Input, Table, Tag, Space, Modal, Descriptions } from "antd";
+import { Button, Card, Input, Table, Tag, Space, Modal, Descriptions } from "antd";
 import { API_BASE_CHARACTERS } from "../config/EnvironmentConfig";
-import { Link } from "react-router-dom";
 import Highlighter from "react-highlight-words";
 import { SearchOutlined } from "@ant-design/icons";
-import CharacterDetail from "./CharacterDetail";
 import "./Characters.css"
 
 function Characters() {
   const { Meta } = Card;
-  const { Search } = Input;
   const [characters, SetCharacters] = useState();
   const [pageNumber, setPageNumber] = useState();
   const [pageSize, setPageSize] = useState("20");
@@ -17,7 +14,7 @@ function Characters() {
   const [searchedColumn, setSearchedColumn] = useState("");
   const [searchText, setSearchText] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [isLoading,setIsLoading] = useState(true)
   useEffect(() => {
     fetch(API_BASE_CHARACTERS)
       .then((response) => response.json())
@@ -25,6 +22,7 @@ function Characters() {
         SetCharacters(data.results);
         setTotalCharacterNumbers(data.info.count);
         setPageNumber(data.info.pages);
+        setIsLoading(false)
       });
   }, []);
 
@@ -281,6 +279,7 @@ function Characters() {
       <Table
        title={()=>(<h3 className="charactersTitle" >Characters List</h3>)}
         columns={columns}
+        loading={isLoading}
         dataSource={characters}
         onChange={onTableChange}
         rowKey="id"

@@ -1,10 +1,7 @@
 import { Card, List } from "antd";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  API_BASE_CHARACTERS,
-  API_BASE_EPISODES,
-} from "../config/EnvironmentConfig";
+import { API_BASE_EPISODES } from "../config/EnvironmentConfig";
 import CharacterCard from "./CharacterCard";
 
 function EpisodeDetails() {
@@ -12,8 +9,6 @@ function EpisodeDetails() {
   const { episodeId } = useParams();
   const [episodeDetail, SetEpisodeDetail] = useState();
   const [characters, SetCharacters] = useState();
-  const [details, SetDetails] = useState();
-  let arr = [];
 
   useEffect(() => {
     fetch(`${API_BASE_EPISODES}/${episodeId}`)
@@ -21,27 +16,8 @@ function EpisodeDetails() {
       .then((data) => {
         SetCharacters(data.characters);
         SetEpisodeDetail(data);
-        
       });
-      // characters &&  characters.map((episode) => arr.push(getIdFromUrl(episode)));
-      //   let characterIds = arr.toString();
-      //   console.log(characterIds);
-      //   let url = `${API_BASE_CHARACTERS}/${characterIds}`;
-      //   console.log(url)
-        
-      // fetch(url)
-      //   .then((data) => data.json())
-      //   .then((resp) => {
-      //     console.log(resp)
-      //     SetDetails(resp);
-      //   });
   }, []);
-  const getIdFromUrl = (characters) => {
-    const str = characters.split("/");
-    return parseInt(str[str.length - 1]);
-  };
-
- // console.log(details);
   return (
     <div className="site-card-border-less-wrapper">
       {episodeDetail && (
@@ -57,7 +33,15 @@ function EpisodeDetails() {
           }}
         >
           <List.Item>
-            <Card>
+            <Card
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "center",
+                backgroundColor: "#F0F2F5",
+              }}
+            >
               <Meta
                 title={episodeDetail.name}
                 description={episodeDetail.episode}
@@ -66,19 +50,11 @@ function EpisodeDetails() {
           </List.Item>
         </List>
       )}
-   <h3>Characters</h3>
-   <CharacterCard characters={characters} />
-      {/* {details ? details.map((characters) => {
-          return (
-            <Card
-              hoverable
-              style={{ width: 240 }}
-              cover={<img alt={characters.name} src={characters.image} />}
-            >
-              <Meta title={characters.name} description={characters.status} />
-            </Card>
-          );  
-        }) : <a>span</a> } */}
+
+      <h3 style={{ display: "flex", justifyContent: "center" }}>
+        Episodes of Characters
+      </h3>
+      <CharacterCard characters={characters} />
     </div>
   );
 }
