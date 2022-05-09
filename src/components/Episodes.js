@@ -27,6 +27,8 @@ function Episodes() {
         SetEpisodes(data.results);
       });
   }
+
+
   return (
     <div className="episodeContainer">
       <h1 className="episodeTitle"> Episodes</h1>

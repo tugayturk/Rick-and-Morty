@@ -169,6 +169,7 @@ function Characters() {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
   const columns = [
     {
       title: "ID",
