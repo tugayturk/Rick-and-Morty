@@ -42,6 +42,8 @@
     height: 100vh;
     width: 100%;
     background-image: url("https://images6.alphacoders.com/909/thumb-1920-909641.png");
+    
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,6 +54,7 @@
     height:100vh;
     width: 100%;
     background-image: url("https://images7.alphacoders.com/633/633262.png");
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
